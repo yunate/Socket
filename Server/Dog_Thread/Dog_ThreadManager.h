@@ -36,7 +36,7 @@ public:
 	
 
 	// 创建/停止dog_server线程
-	void				CreateDogServerThread();
+	void				CreateDogServerThread(int nPort);
 	void				StopDogServerThread();
 
 	// 创建/停止 Dog_S_Client_HandOuterThread 线程

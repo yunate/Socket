@@ -6,27 +6,25 @@
 #define WSAVERSIONMAJOR 2
 #define WSAVERSIONMINOR 2
 
-Dog_Server::Dog_Server()
-	:m_nPort(-1), m_ulIp(-1), m_bInit(false), m_hSocket(INVALID_SOCKET)
+Dog_Server::Dog_Server(int nPort)
+	:m_nPort(nPort), m_hSocket(INVALID_SOCKET)
 {
 }
 
 Dog_Server::~Dog_Server()
 {
-	Stop();
 }
 
-bool Dog_Server::_Init()
+bool Dog_Server::Init()
 {
 	GetDoggy().Bark_Info_Log("Dog_Server init...");
-	m_bInit = false;
 
 	try
 	{
-		if (-1 == m_nPort || -1 == m_ulIp)
+		if (-1 == m_nPort)
 		{
-			GetDoggy().Bark_Error_Log("m_nPort or m_ulIp not init, please call SetPort or SetIp before _Init");
-			return m_bInit;
+			GetDoggy().Bark_Error_Log("m_nPort is invalid");
+			return false;
 		}
 
 		//初始化WSA  
@@ -36,7 +34,7 @@ bool Dog_Server::_Init()
 		if (0 != WSAStartup(sockVersion, &wsaData))
 		{
 			GetDoggy().Bark_Error_Log("WSAStartup error !");
-			return m_bInit;
+			return false;
 		}
 
 		//创建套接字  
@@ -54,7 +52,7 @@ bool Dog_Server::_Init()
 		sockaddr_in sin;
 		sin.sin_family = AF_INET;
 		sin.sin_port = htons(m_nPort);
-		sin.sin_addr.S_un.S_addr = m_ulIp;
+		sin.sin_addr.S_un.S_addr = INADDR_ANY;
 
 		if (bind(m_hSocket, (LPSOCKADDR)&sin, sizeof(sin)) == SOCKET_ERROR)
 		{
@@ -71,63 +69,31 @@ bool Dog_Server::_Init()
 	{
 		WSACleanup();
 		GetDoggy().Bark_Error_Log(e.what());
-		m_bInit = false;
-		return m_bInit;
+		return false;
 	}
 
 	GetDoggy().Bark_Info_Log("Dog_Server init success");
 
-	m_bInit = true;
-	return m_bInit;
-}
-
-bool Dog_Server::Start()
-{
-	if (!_Init())
-	{
-		return false;
-	}
-
-	// 开启监听循环
-	SOCKET sClient;
-	sockaddr_in remoteAddr;
-	int nAddrlen = sizeof(remoteAddr);
-	while (m_bInit)
-	{
-		sClient = accept(m_hSocket, (SOCKADDR *)&remoteAddr, &nAddrlen);
-
-		if (sClient == INVALID_SOCKET)
-		{
-			Sleep(5);
-			continue;
-		}
-
-		// 将这个请求加入全局的client池中
-		GETGOLBALDATA().InsertClient(sClient);
-	}
-
 	return true;
 }
 
-bool Dog_Server::Stop()
+void Dog_Server::UnInit()
 {
-	if (m_bInit)
+	if (INVALID_SOCKET != m_hSocket)
 	{
-		m_bInit = false;
 		closesocket(m_hSocket);
 		m_hSocket = INVALID_SOCKET;
 		WSACleanup();
 	}
-
-	return true;
 }
 
-void Dog_Server::SetPort(int nPort)
+SOCKET Dog_Server::Accept(sockaddr_in* addr, int * addrlen)
 {
-	m_nPort = nPort;
-}
+	SOCKET sClient = accept(m_hSocket, (SOCKADDR *)addr, addrlen);
 
-void Dog_Server::SetIp(unsigned long ulIp/* = INADDR_ANY*/)
-{
-	m_ulIp = ulIp;
+	if (sClient == INVALID_SOCKET)
+	{
+		return 0;
+	}
+	return sClient;
 }

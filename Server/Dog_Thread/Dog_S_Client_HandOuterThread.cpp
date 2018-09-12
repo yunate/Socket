@@ -6,14 +6,11 @@
 #define	MAX_S_CLIENT_THREAD_COUNT 5
 
 Dog_S_Client_HandOuterThread::Dog_S_Client_HandOuterThread()
-	: m_bRun(true)
 {
-	Init();
 }
 
 Dog_S_Client_HandOuterThread::~Dog_S_Client_HandOuterThread()
 {
-	UnInit();
 }
 
 void Dog_S_Client_HandOuterThread::Init()
@@ -32,9 +29,15 @@ void Dog_S_Client_HandOuterThread::UnInit()
 	}
 }
 
-void Dog_S_Client_HandOuterThread::_Stop()
+bool Dog_S_Client_HandOuterThread::_Dog_Stop()
 {
-	m_bRun = false;
+	UnInit();
+	return true;
+}
+
+void Dog_S_Client_HandOuterThread::InitDes()
+{
+	m_sThreadDes = "Dog_S_Client_HandOuterThread : ";
 }
 
 void Dog_S_Client_HandOuterThread::_Run()
@@ -81,6 +84,9 @@ void Dog_S_Client_HandOuterThread::_Run()
 				++it;
 			}
 
+			char sInfo[MAX_PATH] = { 0 };
+			sprintf_s(sInfo, sizeof(sInfo), "the client : %s is hand out to %d thread", (*cit)->GetIp().c_str(), temp->GetId());
+			GetDoggy().Bark_Info_Log(std::string(sInfo));
 			temp->InsertClient(*cit);
 			cit = clients.erase(cit);
 		}

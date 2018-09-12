@@ -65,12 +65,13 @@ Dog_ThreadManager::ThreadList & Dog_ThreadManager::GetThreadsByKind(Dog_ThreadMa
 		return m_ThreadPull[nKind];
 	}
 
-	return ThreadList();
+	return m_ThreadPull[Dog_ThreadManager::THREAD_ERROR];
 }
 
-void Dog_ThreadManager::CreateDogServerThread()
+void Dog_ThreadManager::CreateDogServerThread(int nPort)
 {
-	IThread* pThread = new Dog_ServerThread();
+	Dog_ServerThread* pThread = new Dog_ServerThread(nPort);
+
 	if (InsertThread(THREAD_DOG_SERVER, pThread))
 	{
 		pThread->Start();
@@ -110,7 +111,7 @@ void Dog_ThreadManager::StopDogSClDisConnCientThread()
 
 void Dog_ThreadManager::CreateDogSClientHandOutThread()
 {
-	IThread* pThread = new Dog_S_Client_HandOuterThread();
+	Dog_S_Client_HandOuterThread* pThread = new Dog_S_Client_HandOuterThread();
 	if (InsertThread(THREAD_DOG_CLIENT_HANDOUT, pThread))
 	{
 		pThread->Start();
@@ -156,4 +157,5 @@ void Dog_ThreadManager::StopDogSClientThread(int nId)
 
 		++it;
 	}
+
 }

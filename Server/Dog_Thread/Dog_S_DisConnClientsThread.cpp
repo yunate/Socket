@@ -4,7 +4,6 @@
 #include "Dog_GolbalData.h"
 
 Dog_S_DisConnClientsThread::Dog_S_DisConnClientsThread()
-	: m_bRun(true)
 {
 }
 
@@ -12,9 +11,9 @@ Dog_S_DisConnClientsThread::~Dog_S_DisConnClientsThread()
 {
 }
 
-void Dog_S_DisConnClientsThread::_Stop()
+void Dog_S_DisConnClientsThread::InitDes()
 {
-	m_bRun = false;
+	m_sThreadDes = "Dog_S_DisConnClientsThread : ";
 }
 
 void Dog_S_DisConnClientsThread::_Run()

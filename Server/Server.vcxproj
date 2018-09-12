@@ -38,6 +38,7 @@
     <ClInclude Include="Dog_Thread\Dog_S_Client_HandOuterThread.h" />
     <ClInclude Include="Dog_Thread\Dog_S_DisConnClientsThread.h" />
     <ClInclude Include="Dog_Thread\Dog_ThreadManager.h" />
+    <ClInclude Include="Dog_Thread\Dog_Thread_Base.hpp" />
     <ClInclude Include="SocketHead.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

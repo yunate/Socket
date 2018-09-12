@@ -3,8 +3,8 @@
 
 #include "Log/LogDoggy.h"
 
-Dog_S_Client::Dog_S_Client(SOCKET hClient)
-	: m_hClient(hClient), m_bConnect(false), m_nErrorCount(0)
+Dog_S_Client::Dog_S_Client(SOCKET hClient, sockaddr_in address)
+	: m_hClient(hClient), m_Address(address), m_bConnect(false), m_nErrorCount(0)
 {
 }
 
@@ -81,8 +81,16 @@ void Dog_S_Client::ReceviceData()
 	// TODO:
 }
 
+std::string Dog_S_Client::GetIp()
+{
+	return std::string(inet_ntoa(m_Address.sin_addr));;
+}
+
 void Dog_S_Client::OnDisConnect()
 {
 	// 不在这里处理
 	m_bConnect = false;
+	char sInfo[MAX_PATH] = { 0 };
+	sprintf_s(sInfo, sizeof(sInfo), "the client : %s is DisConnected", GetIp().c_str());
+	GetDoggy().Bark_Info_Log(std::string(sInfo));
 }

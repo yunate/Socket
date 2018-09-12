@@ -17,13 +17,8 @@ public:
 	~Dog_GolbalData();
 
 public:
-	inline Dog_Server& GetServer()
-	{
-		return Dog_Server::GetIns();
-	}
-
 	// 将连接的客户端加入到池中
-	void InsertClient(SOCKET hClient);
+	void InsertClient(SOCKET hClient, sockaddr_in address);
 	void InsertClient(Dog_S_Client* pClient);
 
 	// 将已经断开连接的客户端加入到池中，给相应线程处理

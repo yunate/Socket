@@ -6,10 +6,8 @@
 int main(int argc, char* argv[])
 {
 	GetDoggy().SetTracer(new LocalFileTracer("server"));
-	GETGOLBALDATA().GetServer().SetIp(INADDR_ANY);
-	GETGOLBALDATA().GetServer().SetPort(8888);
 
-	GETTHREADMANAGER().CreateDogServerThread();
+	GETTHREADMANAGER().CreateDogServerThread(8888);
 	GETTHREADMANAGER().CreateDogSClientHandOutThread();
 	GETTHREADMANAGER().CreateDogSDisConnClientThread();
 

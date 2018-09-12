@@ -4,6 +4,7 @@
 
 #ifndef NDEBUG
 #include <assert.h>
+#include <iostream>
 #endif
 
 #define MAX_LOG_FILE_SIZE 10
@@ -39,6 +40,8 @@ bool LocalFileTracer::Trace(ILog & log)
 	{
 		assert(1);
 	}
+
+	std::cout << log.GetLog();
 #endif
 
 	return true;

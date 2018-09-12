@@ -74,5 +74,8 @@
     <ClInclude Include="Dog_Thread\Dog_S_DisConnClientsThread.h">
       <Filter>Dog_Thread</Filter>
     </ClInclude>
+    <ClInclude Include="Dog_Thread\Dog_Thread_Base.hpp">
+      <Filter>Dog_Thread</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

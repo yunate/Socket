@@ -15,10 +15,11 @@ Dog_GolbalData::~Dog_GolbalData()
 	m_pDisConnClientMutex = NULL;
 }
 
-void Dog_GolbalData::InsertClient(SOCKET hClient)
+void Dog_GolbalData::InsertClient(SOCKET hClient, sockaddr_in address)
 {
+	GetDoggy().Bark_Info_Log("there is a client linked, ip is:" + std::string(inet_ntoa(address.sin_addr)));
 	Dog_Lock lock(m_pClientMutex);
-	Dog_S_Client* pClient = new Dog_S_Client(hClient);
+	Dog_S_Client* pClient = new Dog_S_Client(hClient, address);
 
 	if (pClient->Init())
 	{

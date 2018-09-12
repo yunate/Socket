@@ -4,7 +4,7 @@
 #include "Dog_GolbalData.h"
 
 Dog_S_ClientThread::Dog_S_ClientThread(int nId)
-	: m_bRun(true), m_nThreadId(nId)
+	: m_nThreadId(nId)
 {
 	m_pMutex = new std::mutex();
 }
@@ -17,6 +17,13 @@ void Dog_S_ClientThread::InsertClient(Dog_S_Client * pClient)
 {
 	Dog_Lock lock(m_pMutex);
 	m_pClients.push_back(pClient);
+}
+
+void Dog_S_ClientThread::InitDes()
+{
+	char sInfo[MAX_PATH] = { 0 };
+	sprintf_s(sInfo, sizeof(sInfo), "Dog_S_ClientThread %d :", m_nThreadId);
+	m_sThreadDes = sInfo;
 }
 
 void Dog_S_ClientThread::_Run()
@@ -64,9 +71,4 @@ void Dog_S_ClientThread::_Run()
 
 		m_pClients.clear();
 	}
-}
-
-void Dog_S_ClientThread::_Stop()
-{
-	m_bRun = false;
 }
