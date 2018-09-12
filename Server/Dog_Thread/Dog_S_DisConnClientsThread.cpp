@@ -36,6 +36,7 @@ void Dog_S_DisConnClientsThread::_Run()
 		while (clients.end() != it)
 		{
 			// TODO:这儿作client断开连接后的处理，比如后续命令，内存释放等
+			(*it)->AnayzeBuff();
 			delete (*it);
 			it = clients.erase(it);
 		}

@@ -14,6 +14,9 @@
     <Filter Include="Thread">
       <UniqueIdentifier>{c07e757d-9b56-4284-a38a-36fe95953664}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PackageCmd">
+      <UniqueIdentifier>{cf018c56-1459-4b08-bc5a-cef4ae3eda78}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Log\ILog.hpp">
@@ -38,6 +41,12 @@
       <Filter>Thread</Filter>
     </ClInclude>
     <ClInclude Include="CommonHead.h" />
+    <ClInclude Include="PackageCmd\DataPackageTools.h">
+      <Filter>PackageCmd</Filter>
+    </ClInclude>
+    <ClInclude Include="PackageCmd\Cmd.hpp">
+      <Filter>PackageCmd</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Log\LogDoggy.cpp">
@@ -57,6 +66,9 @@
     </ClCompile>
     <ClCompile Include="Thread\IThread.cpp">
       <Filter>Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="PackageCmd\DataPackageTools.cpp">
+      <Filter>PackageCmd</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

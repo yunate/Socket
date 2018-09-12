@@ -64,9 +64,10 @@ void Dog_S_Client_HandOuterThread::_Run()
 			Dog_ThreadManager::ThreadList&	threads = GETTHREADMANAGER().GetThreadsByKind(Dog_ThreadManager::THREAD_DOG_S_CLIENT);
 			Dog_ThreadManager::ThreadList::iterator it = threads.begin();
 
+			// TODO:可以根据实际情况选择相应的策略
+			// 注意，这个是一个策略问题，比如目前的，一共起5个线程，将client放到最少的那个里
 			if (threads.end() == it)
 			{
-				// threads 一般不会为空
 				Init();
 				break;
 			}

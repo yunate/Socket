@@ -2,6 +2,10 @@
 #include<STDIO.H>
 #include<iostream>
 #include<string>
+
+#include "PackageCmd/DataPackageTools.h"
+#include "PackageCmd/Cmd.hpp"
+
 using namespace std;
 
 #pragma comment(lib, "ws2_32.lib")
@@ -36,21 +40,24 @@ int main()
 
 		string data;
 		cin >> data;
-		const char * sendData;
-		sendData = data.c_str();   //string转const char* 
-								   //char * sendData = "你好，TCP服务端，我是客户端\n";
-		send(sclient, sendData, strlen(sendData), 0);
+		Cmd::Cmd_String cmd_string;
+		cmd_string.m_sData = data;
+		DataPackageTools tool;
+		std::string ss = tool.Package((char*)(&cmd_string), sizeof(cmd_string));
+		send(sclient, ss.c_str(), ss.length(), 0);
+
+
 		//send()用来将数据由指定的socket传给对方主机
 		//int send(int s, const void * msg, int len, unsigned int flags)
 		//s为已建立好连接的socket，msg指向数据内容，len则为数据长度，参数flags一般设0
 		//成功则返回实际传送出去的字符数，失败返回-1，错误原因存于error 
 
-		char recData[255];
-		int ret = recv(sclient, recData, 255, 0);
-		if (ret > 0) {
-			recData[ret] = 0x00;
-			printf(recData);
-		}
+// 		char recData[255];
+// 		int ret = recv(sclient, recData, 255, 0);
+// 		if (ret > 0) {
+// 			recData[ret] = 0x00;
+// 			printf(recData);
+// 		}
 		closesocket(sclient);
 	}
 

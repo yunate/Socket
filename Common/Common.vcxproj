@@ -127,6 +127,8 @@
     <ClInclude Include="Log\LogFormatImpl.h" />
     <ClInclude Include="Log\LogImpl.h" />
     <ClInclude Include="Log\LogTracerImpl.h" />
+    <ClInclude Include="PackageCmd\Cmd.hpp" />
+    <ClInclude Include="PackageCmd\DataPackageTools.h" />
     <ClInclude Include="Thread\IThread.h" />
   </ItemGroup>
   <ItemGroup>
@@ -135,6 +137,7 @@
     <ClCompile Include="Log\LogFormatImpl.cpp" />
     <ClCompile Include="Log\LogImpl.cpp" />
     <ClCompile Include="Log\LogTracerImpl.cpp" />
+    <ClCompile Include="PackageCmd\DataPackageTools.cpp" />
     <ClCompile Include="Thread\IThread.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
