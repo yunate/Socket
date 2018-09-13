@@ -86,7 +86,7 @@ void Dog_S_Client_HandOuterThread::_Run()
 			}
 
 			char sInfo[MAX_PATH] = { 0 };
-			sprintf_s(sInfo, sizeof(sInfo), "the client : %s is hand out to %d thread", (*cit)->GetIp().c_str(), temp->GetId());
+			sprintf_s(sInfo, sizeof(sInfo), "the client : %s is hand out to %d clientthread", (*cit)->GetIp().c_str(), temp->GetId());
 			GetDoggy().Bark_Info_Log(std::string(sInfo));
 			temp->InsertClient(*cit);
 			cit = clients.erase(cit);

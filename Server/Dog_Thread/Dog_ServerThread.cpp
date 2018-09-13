@@ -44,5 +44,10 @@ void Dog_ServerThread::_Run()
 		GETGOLBALDATA().InsertClient(sClient, remoteAddr);
 	}
 
+}
+
+bool Dog_ServerThread::_Dog_Stop()
+{
 	m_pServer->UnInit();
+	return true;
 }

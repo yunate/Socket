@@ -17,7 +17,9 @@ public:
 		THREAD_DOG_SERVER,
 		THREAD_DOG_CLIENT_HANDOUT,
 		THREAD_DOG_DisConn_CLIENT,
-		THREAD_DOG_S_CLIENT
+		THREAD_DOG_S_CLIENT,
+		THREAD_DOG_MSG_HANDOUT,
+		THREAD_DOG_MSG
 	};
 
 	typedef std::list<IThread*> ThreadList;
@@ -39,7 +41,7 @@ public:
 	void				CreateDogServerThread(int nPort);
 	void				StopDogServerThread();
 
-	// 创建/停止 Dog_S_Client_HandOuterThread 线程
+	// 创建/停止 Dog_S_DisConnClientsThread 线程
 	void				CreateDogSDisConnClientThread();
 	void				StopDogSClDisConnCientThread();
 
@@ -47,9 +49,21 @@ public:
 	void				CreateDogSClientHandOutThread();
 	void				StopDogSClientHandOutThread();
 
+	// 创建/停止 Dog_Msg_HandOutThread 线程
+	void				CreateDogMsgHandOutThread();
+	void				StopDogMsgHandOutThread();
+
 	// 创建/停止 Dog_S_ClientThread 线程
 	void				CreateDogSClientThread(int nId);
 	void				StopDogSClientThread(int nId);
+
+	// 创建/停止 Dog_Msg_Thread 线程
+	void				CreateDogMsgThread(int nId);
+	void				StopDogMsgThread(int nId);
+	void				StopAllDogMsgThread();
+
+	// 停止全部线程
+	void				StopAllThread();
 
 private:
 	ThreadPull				m_ThreadPull;

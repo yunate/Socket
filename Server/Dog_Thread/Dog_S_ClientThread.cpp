@@ -11,6 +11,11 @@ Dog_S_ClientThread::Dog_S_ClientThread(int nId)
 
 Dog_S_ClientThread::~Dog_S_ClientThread()
 {
+	if (m_pMutex)
+	{
+		delete m_pMutex;
+		m_pMutex = 0;
+	}
 }
 
 void Dog_S_ClientThread::InsertClient(Dog_S_Client * pClient)

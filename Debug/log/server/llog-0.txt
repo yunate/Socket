@@ -1,0 +1,26 @@
+2018/09/13 16:27:42	info:	the client : 127.0.0.1 is hand out to 0 thread
+2018/09/13 16:27:42	info:	the client : 127.0.0.1 is DisConnected
+2018/09/13 16:27:48	info:	the client : 127.0.0.1 is DisConnected
+2018/09/13 16:36:36	info:	Dog_Server init...
+2018/09/13 16:36:36	info:	Dog_Server init success
+2018/09/13 16:36:36	info:	Dog_ServerThread : start
+2018/09/13 16:36:36	info:	Dog_S_Client_HandOuterThread : start
+2018/09/13 16:36:36	info:	Dog_S_DisConnClientsThread : start
+2018/09/13 16:36:36	info:	Dog_Msg_HandOutThread : start
+2018/09/13 16:36:47	info:	there is a client linked, ip is:127.0.0.1
+2018/09/13 16:36:47	info:	Dog_S_ClientThread 0 :start
+2018/09/13 16:36:47	info:	Dog_S_ClientThread 1 :start
+2018/09/13 16:36:47	info:	Dog_S_ClientThread 2 :start
+2018/09/13 16:36:47	info:	Dog_S_ClientThread 3 :start
+2018/09/13 16:36:47	info:	Dog_S_ClientThread 4 :start
+2018/09/13 16:36:47	info:	the client : 127.0.0.1 is hand out to 0 clientthread
+2018/09/13 16:36:57	info:	there is a client linked, ip is:127.0.0.1
+2018/09/13 16:36:57	info:	Dog_Msg_Thread 0 :start
+2018/09/13 16:36:57	info:	the client : 127.0.0.1 is hand out to 1 clientthread
+2018/09/13 16:36:57	info:	the client : 127.0.0.1 is DisConnected
+2018/09/13 16:36:57	info:	Dog_Msg_Thread 3 :start
+2018/09/13 16:36:57	info:	Dog_Msg_Thread 4 :start
+2018/09/13 16:36:57	info:	the msg : 1 is hand out to 0 msgthread
+2018/09/13 16:37:11	info:	there is a client linked, ip is:127.0.0.1
+2018/09/13 16:37:11	info:	the msg : 1 is hand out to 0 msgthread
+2018/09/13 16:37:11	info:	the client : 127.0.0.1 is hand out to 0 clientthread

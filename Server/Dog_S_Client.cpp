@@ -1,8 +1,11 @@
 #include "Dog_S_Client.h"
 #include "CommonHead.h"
 #include "PackageCmd/DataPackageTools.h"
+#include "PackageCmd/Cmd.hpp"
 
 #include "Log/LogDoggy.h"
+#include "Dog_Msg/Dog_MsgFactory.h"
+#include "Dog_GolbalData.h"
 
 Dog_S_Client::Dog_S_Client(SOCKET hClient, sockaddr_in address)
 	: m_hClient(hClient), m_Address(address), m_bConnect(false), m_nErrorCount(0), m_sStrBuff("")
@@ -28,7 +31,6 @@ bool Dog_S_Client::Init()
 	return true;
 }
 
-#include "PackageCmd/Cmd.hpp"
 void Dog_S_Client::ReceviceData()
 {
 	if (!m_bConnect)
@@ -80,10 +82,23 @@ void Dog_S_Client::ReceviceData()
 
 		// 解数据包,并将解析到的所有数据段抛出去
 		// TODO:
-		std::list<std::string> ss = AnayzeBuff();
-		Cmd::Cmd_Head Headd = *((Cmd::Cmd_Head*)(&ss.back()));
-		int i = 0;
-		++i;
+		std::list<std::string> sMsgs = AnayzeBuff();
+
+		std::list<std::string>::iterator it = sMsgs.begin();
+
+		while (sMsgs.end() != it)
+		{
+			//MsgHead
+			Cmd::MsgHead msgHead;
+			memcpy(&msgHead, (*it).data(), sizeof(Cmd::MsgHead));
+			std::string sMsgData;
+			sMsgData.append((*it).data() + sizeof(Cmd::MsgHead), (*it).size() - sizeof(Cmd::MsgHead));
+			IDog_Msg* pMsg = GETMSTFACTORY().CreateMsg(msgHead.m_nMsgType);
+			pMsg->Init(msgHead, sMsgData);
+			GETGOLBALDATA().InsertMsg(pMsg);
+
+			++it;
+		}
 	}
 }
 

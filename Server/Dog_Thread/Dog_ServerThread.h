@@ -20,6 +20,7 @@ public:
 
 private:
 	virtual void _Run();
+	virtual bool _Dog_Stop();
 
 	friend Dog_ThreadManager;
 };

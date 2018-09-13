@@ -70,7 +70,7 @@ std::string LocalFileTracer::GetAvailableFile()
 			DeleteFileA(sLogIniFullPath.c_str());
 		}
 
-		if (0 == m_sFileName.length())
+		if (0 == strlen(m_sFileName.c_str()))
 		{
 			m_sFileName = "log-0.txt";
 		}
@@ -111,7 +111,7 @@ std::string LocalFileTracer::GetAvailableFile()
 	FILE* fp = 0;
 	if (0 == fopen_s(&fp, sLogIniFullPath.c_str(), "a"))
 	{
-		fwrite(m_sFileName.c_str(), m_sFileName.length(), 1, fp);
+		fwrite(m_sFileName.c_str(), strlen(m_sFileName.c_str()), 1, fp);
 		fclose(fp);
 	}
 

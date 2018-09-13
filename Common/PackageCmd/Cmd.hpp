@@ -17,28 +17,20 @@ namespace Cmd
 		CMD_ERROR_END								// 错误尾
 	};
 
-
-	typedef struct Cmd_Head
+	typedef struct MsgHead
 	{
-		Cmd_Head(CmdType nCmdType)
-			: m_nCmdType(nCmdType)
-		{
-		}
-
-		// 这是那种类型的数据
-		CmdType m_nCmdType;
-	}Cmd_Head;
-
-	typedef struct Cmd_String
-	{
-		Cmd_String()
-			: m_head(CMD_STRING)
+		MsgHead(CmdType nType)
+			: m_nMsgType(nType)
 		{
 
 		}
 
-		Cmd_Head m_head;
-		std::string m_sData;
-	}Cmd_String;
+		MsgHead()
+		{
+
+		}
+
+		CmdType m_nMsgType;
+	}MsgHead;
 }
 

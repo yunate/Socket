@@ -10,6 +10,13 @@ using namespace std;
 
 #pragma comment(lib, "ws2_32.lib")
 
+void Send(SOCKET socket, Cmd::CmdType nType, unsigned char* buff, size_t nLength)
+{
+	DataPackageTools tool;
+	std::string sPackBuff = tool.Package(nType, buff, nLength);
+	send(socket, sPackBuff.data(), sPackBuff.size(), 0);
+}
+
 int main()
 {
 	WORD sockVersion = MAKEWORD(2, 2);
@@ -40,12 +47,7 @@ int main()
 
 		string data;
 		cin >> data;
-		Cmd::Cmd_String cmd_string;
-		cmd_string.m_sData = data;
-		DataPackageTools tool;
-		std::string ss = tool.Package((char*)(&cmd_string), sizeof(cmd_string));
-		send(sclient, ss.c_str(), ss.length(), 0);
-
+		Send(sclient, Cmd::CmdType::CMD_STRING, (unsigned char*)data.data(), data.size());
 
 		//send()用来将数据由指定的socket传给对方主机
 		//int send(int s, const void * msg, int len, unsigned int flags)

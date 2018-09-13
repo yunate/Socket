@@ -16,6 +16,9 @@
     <Filter Include="Dog_Thread">
       <UniqueIdentifier>{0e0fb5a7-8017-4ffb-be9a-93ce26630773}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Dog_Msg">
+      <UniqueIdentifier>{5979ae4e-fc80-42b2-8e32-84eb56be9d1d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -44,6 +47,24 @@
     </ClCompile>
     <ClCompile Include="Dog_Thread\Dog_ServerThread.cpp">
       <Filter>Dog_Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="Dog_Thread\Dog_Msg_HandOutThread.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Dog_Thread\Dog_Msg_Thread.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Dog_Msg\IDog_Msg.cpp">
+      <Filter>Dog_Msg</Filter>
+    </ClCompile>
+    <ClCompile Include="Dog_Msg\Dog_MsgFactory.cpp">
+      <Filter>Dog_Msg</Filter>
+    </ClCompile>
+    <ClCompile Include="Dog_Msg\Dog_S_MsgBind.cpp">
+      <Filter>Dog_Msg</Filter>
+    </ClCompile>
+    <ClCompile Include="Dog_Msg\Dog_MsgImpl.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +97,21 @@
     </ClInclude>
     <ClInclude Include="Dog_Thread\Dog_Thread_Base.hpp">
       <Filter>Dog_Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="Dog_Thread\Dog_Msg_HandOutThread.h">
+      <Filter>Dog_Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="Dog_Thread\Dog_Msg_Thread.h">
+      <Filter>Dog_Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="Dog_Msg\IDog_Msg.h">
+      <Filter>Dog_Msg</Filter>
+    </ClInclude>
+    <ClInclude Include="Dog_Msg\Dog_MsgFactory.h">
+      <Filter>Dog_Msg</Filter>
+    </ClInclude>
+    <ClInclude Include="Dog_Msg\Dog_MsgImpl.h">
+      <Filter>Dog_Msg</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

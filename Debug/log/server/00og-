@@ -1,0 +1,30 @@
+2018/09/13 16:47:30	info:	the client : 127.0.0.1 is DisConnected
+2018/09/13 16:47:32	info:	there is a client linked, ip is:127.0.0.1
+2018/09/13 16:47:32	info:	the client : 127.0.0.1 is hand out to 0 clientthread
+2018/09/13 16:47:32	info:	the msg : 1 is hand out to 0 msgthread
+2018/09/13 16:47:32	info:	the client : 127.0.0.1 is DisConnected
+2018/09/13 16:47:33	info:	there is a client linked, ip is:127.0.0.1
+2018/09/13 16:47:33	info:	the client : 127.0.0.1 is hand out to 1 clientthread
+2018/09/13 16:47:33	info:	the msg : 1 is hand out to 0 msgthread
+2018/09/13 16:47:33	info:	the client : 127.0.0.1 is DisConnected
+2018/09/13 16:47:35	info:	there is a client linked, ip is:127.0.0.1
+2018/09/13 16:47:35	info:	the client : 127.0.0.1 is hand out to 0 clientthread
+2018/09/13 16:47:35	info:	the msg : 1 is hand out to 0 msgthread
+2018/09/13 16:47:35	info:	the client : 127.0.0.1 is DisConnected
+2018/09/13 16:47:37	info:	there is a client linked, ip is:127.0.0.1
+2018/09/13 16:47:37	info:	the msg : 1 is hand out to 0 msgthread
+2018/09/13 16:47:37	info:	the client : 127.0.0.1 is DisConnected
+2018/09/13 16:47:38	info:	there is a client linked, ip is:127.0.0.1
+2018/09/13 16:47:38	info:	the msg : 1 is hand out to 0 msgthread
+2018/09/13 16:47:38	info:	the client : 127.0.0.1 is DisConnected
+2018/09/13 16:47:40	info:	there is a client linked, ip is:127.0.0.1
+2018/09/13 16:47:40	info:	the client : 127.0.0.1 is hand out to 1 clientthread
+2018/09/13 16:47:40	info:	the client : 127.0.0.1 is DisConnected
+2018/09/13 16:47:42	info:	there is a client linked, ip is:127.0.0.1
+2018/09/13 16:47:42	info:	the msg : 1 is hand out to 0 msgthread
+2018/09/13 16:47:42	info:	the client : 127.0.0.1 is DisConnected
+2018/09/13 16:47:43	info:	there is a client linked, ip is:127.0.0.1
+2018/09/13 16:47:43	info:	the client : 127.0.0.1 is hand out to 1 clientthread
+2018/09/13 16:47:43	info:	the msg : 1 is hand out to 0 msgthread
+2018/09/13 16:47:43	info:	the client : 127.0.0.1 is DisConnected
+2018/09/13 16:48:03	info:	there is a client linked, ip is:127.0.0.1

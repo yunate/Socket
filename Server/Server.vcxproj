@@ -20,8 +20,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dog_GolbalData.cpp" />
+    <ClCompile Include="Dog_Msg\Dog_MsgImpl.cpp" />
+    <ClCompile Include="Dog_Msg\Dog_S_MsgBind.cpp" />
+    <ClCompile Include="Dog_Msg\IDog_Msg.cpp" />
+    <ClCompile Include="Dog_Msg\Dog_MsgFactory.cpp" />
     <ClCompile Include="Dog_Server.cpp" />
     <ClCompile Include="Dog_S_Client.cpp" />
+    <ClCompile Include="Dog_Thread\Dog_Msg_HandOutThread.cpp" />
+    <ClCompile Include="Dog_Thread\Dog_Msg_Thread.cpp" />
     <ClCompile Include="Dog_Thread\Dog_ServerThread.cpp" />
     <ClCompile Include="Dog_Thread\Dog_S_ClientThread.cpp" />
     <ClCompile Include="Dog_Thread\Dog_S_Client_HandOuterThread.cpp" />
@@ -31,8 +37,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dog_GolbalData.h" />
+    <ClInclude Include="Dog_Msg\Dog_MsgImpl.h" />
+    <ClInclude Include="Dog_Msg\IDog_Msg.h" />
+    <ClInclude Include="Dog_Msg\Dog_MsgFactory.h" />
     <ClInclude Include="Dog_Server.h" />
     <ClInclude Include="Dog_S_Client.h" />
+    <ClInclude Include="Dog_Thread\Dog_Msg_HandOutThread.h" />
+    <ClInclude Include="Dog_Thread\Dog_Msg_Thread.h" />
     <ClInclude Include="Dog_Thread\Dog_ServerThread.h" />
     <ClInclude Include="Dog_Thread\Dog_S_ClientThread.h" />
     <ClInclude Include="Dog_Thread\Dog_S_Client_HandOuterThread.h" />
