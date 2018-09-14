@@ -11,13 +11,7 @@
 
 int main(int argc, char* argv[])
 {
-	ILogTracer* pNormalTracer = new LocalFileTracer("server");
-	AsyncLogTracerImpl* pTracter = new AsyncLogTracerImpl(pNormalTracer);
-	GetDoggy().SetTracer(pTracter);
-	GETTHREADMANAGER().CreateDogServerThread(8888);
-	GETTHREADMANAGER().CreateDogSClientHandOutThread();
-	GETTHREADMANAGER().CreateDogSDisConnClientThread();
-	GETTHREADMANAGER().CreateDogMsgHandOutThread();
+	GETTHREADMANAGER().StartAllThread();
 
 	while (GETGOLBALDATA().IsRun())
 	{
@@ -25,6 +19,5 @@ int main(int argc, char* argv[])
 	}
 
 	GETTHREADMANAGER().StopAllThread();
-	pTracter->Stop();
 	return 0;
 }

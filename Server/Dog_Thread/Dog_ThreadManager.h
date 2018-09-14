@@ -12,6 +12,7 @@ public:
 	enum Thread_Kind
 	{
 		THREAD_ERROR = -1,
+		THREAD_DOG_LOG,
 		THREAD_DOG_SERVER,
 		THREAD_DOG_CLIENT_HANDOUT,
 		THREAD_DOG_DisConn_CLIENT,
@@ -34,6 +35,9 @@ public:
 	bool				InsertThread(Thread_Kind nKind, IThread* pThread);
 	ThreadList&			GetThreadsByKind(Thread_Kind nKind);
 	
+	// 创建/停止日志线程
+	void				CreateDogLogThread();
+	void				StopDogLogThread();
 
 	// 创建/停止dog_server线程
 	void				CreateDogServerThread(int nPort);
@@ -60,7 +64,8 @@ public:
 	void				StopDogMsgThread(int nId);
 	void				StopAllDogMsgThread();
 
-	// 停止全部线程
+	// 创建/停止全部线程
+	void				StartAllThread();
 	void				StopAllThread();
 
 private:

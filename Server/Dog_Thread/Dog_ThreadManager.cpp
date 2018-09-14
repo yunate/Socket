@@ -33,6 +33,7 @@ bool Dog_ThreadManager::InsertThread(Thread_Kind nKind, IThread * pThread)
 		case Dog_ThreadManager::THREAD_DOG_CLIENT_HANDOUT:
 		case Dog_ThreadManager::THREAD_DOG_DisConn_CLIENT:
 		case Dog_ThreadManager::THREAD_DOG_MSG_HANDOUT:
+		case Dog_ThreadManager::THREAD_DOG_LOG:
 		{
 			if (0 == m_ThreadPull[nKind].size())
 			{
@@ -72,6 +73,29 @@ Dog_ThreadManager::ThreadList & Dog_ThreadManager::GetThreadsByKind(Dog_ThreadMa
 	}
 
 	return m_ThreadPull[Dog_ThreadManager::THREAD_ERROR];
+}
+
+void Dog_ThreadManager::CreateDogLogThread()
+{
+	ILogTracer* pNormalTracer = new LocalFileTracer("server");
+	AsyncLogTracerImpl* pTracter = new AsyncLogTracerImpl(pNormalTracer);
+	GetDoggy().SetTracer(pTracter);
+
+	if (InsertThread(THREAD_DOG_LOG, pTracter))
+	{
+		pTracter->Start();
+	}
+}
+
+void Dog_ThreadManager::StopDogLogThread()
+{
+	if (0 != m_ThreadPull[THREAD_DOG_LOG].size())
+	{
+		IThread* pThread = m_ThreadPull[THREAD_DOG_LOG].back();
+		m_ThreadPull[THREAD_DOG_LOG].pop_back();
+		pThread->Stop();
+		// 这个线程被GetDoggy()管理了，所以不要重复释放内存
+	}
 }
 
 void Dog_ThreadManager::CreateDogServerThread(int nPort)
@@ -230,12 +254,25 @@ void Dog_ThreadManager::StopAllDogMsgThread()
 	}
 }
 
+void Dog_ThreadManager::StartAllThread()
+{
+	CreateDogLogThread();
+	CreateDogServerThread(8888);
+	CreateDogSDisConnClientThread();
+	CreateDogSClientHandOutThread();
+	CreateDogMsgHandOutThread();
+}
+
 void Dog_ThreadManager::StopAllThread()
 {
 	StopDogMsgHandOutThread();
 	StopDogSClientHandOutThread();
-	ThreadPull::iterator it = m_ThreadPull.begin();
+	StopDogSClDisConnCientThread();
+	StopDogServerThread();
+	StopDogLogThread();
 
+	// 其他漏网线程
+	ThreadPull::iterator it = m_ThreadPull.begin();
 	while (m_ThreadPull.end() != it)
 	{
 		ThreadList& threadList = it->second;

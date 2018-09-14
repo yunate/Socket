@@ -64,7 +64,6 @@ void Dog_Msg_Thread::_Run()
 	}
 
 	// 对msg清理，不要直接清理，交给Dog_Msg_HandOutThread
-	// 线程停止后将Dog_S_Client返回给GETGOLBALDATA
 	Dog_Lock lock(m_pMutex);
 	if (m_pMsgs.size() > 0)
 	{

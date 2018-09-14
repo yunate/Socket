@@ -131,9 +131,6 @@ AsyncLogTracerImpl::AsyncLogTracerImpl(ILogTracer* pNormalTracter)
 	: m_pNormalTracter(pNormalTracter), m_bRun(true)
 {
 	m_pMutex = new std::mutex();
-
-	// 子类调用父类的函数（不要以为这是一个虚函数就不能调用了）
-	Start();
 }
 
 AsyncLogTracerImpl::~AsyncLogTracerImpl()
@@ -162,7 +159,7 @@ void AsyncLogTracerImpl::_Run()
 	{
 		Sleep(5);
 
-		if (m_pNormalTracter)
+		if (m_upLogList.size() > 0 && m_pNormalTracter)
 		{
 			std::list<Unique_ILog>::iterator it = m_upLogList.begin();
 
