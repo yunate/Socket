@@ -45,7 +45,22 @@
 server-log.ini
 log-0.txt
 
-
+#dir
+/.vs/
+/.git/
+/x64/
+/Release/
+/Debug/
+/Server/x64/
+/Server/Release/
+/Server/Debug/
+/Client/x64/
+/Client/Release/
+/Client/Debug/
+/Common/x64/
+/Common/Release/
+/Common/Debug/
+/Common/lib/
 
 
 
