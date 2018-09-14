@@ -49,6 +49,9 @@ int main()
 		cin >> data;
 		Send(sclient, Cmd::CmdType::CMD_STRING, (unsigned char*)data.data(), data.size());
 
+		Cmd::TestData testdata;
+		Send(sclient, Cmd::CmdType::CMD_TEST, (unsigned char*)&testdata, sizeof(testdata));
+
 		//send()用来将数据由指定的socket传给对方主机
 		//int send(int s, const void * msg, int len, unsigned int flags)
 		//s为已建立好连接的socket，msg指向数据内容，len则为数据长度，参数flags一般设0

@@ -13,3 +13,16 @@ public:
 
 };
 /************************Msg_String*************************************/
+
+/************************Msg_Testdata*************************************/
+class Msg_Testdata : public IDog_Msg
+{
+public:
+	Msg_Testdata();
+	virtual ~Msg_Testdata();
+
+public:
+	virtual bool				HandMsg();		// ¥¶¿Ì
+
+};
+/************************Msg_Testdata*************************************/

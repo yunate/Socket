@@ -11,4 +11,5 @@ m_MsgCreaters[nMsgType] = []() -> IDog_Msg* {return new (classname)();}
 void MsgFactory::Init()
 {
 	BIND_MSG(Cmd::CmdType::CMD_STRING, Msg_String);
+	BIND_MSG(Cmd::CmdType::CMD_TEST, Msg_Testdata);
 }

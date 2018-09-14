@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#include "PackageCmd/Cmd.hpp"
+
 #include "Dog_MsgImpl.h"
 #include "Dog_GolbalData.h"
 
@@ -26,3 +28,20 @@ bool Msg_String::HandMsg()
 }
 /************************Msg_String*************************************/
 
+/************************Msg_Testdata*************************************/
+Msg_Testdata::Msg_Testdata()
+{
+}
+
+Msg_Testdata::~Msg_Testdata()
+{
+}
+
+bool Msg_Testdata::HandMsg()
+{
+	Cmd::TestData* data = (Cmd::TestData*)(m_sMsgData.data());
+	int i = 0;
+	++i;
+	return false;
+}
+/************************Msg_Testdata*************************************/

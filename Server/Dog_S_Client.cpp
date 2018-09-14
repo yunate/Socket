@@ -94,6 +94,15 @@ void Dog_S_Client::ReceviceData()
 			std::string sMsgData;
 			sMsgData.append((*it).data() + sizeof(Cmd::MsgHead), (*it).size() - sizeof(Cmd::MsgHead));
 			IDog_Msg* pMsg = GETMSTFACTORY().CreateMsg(msgHead.m_nMsgType);
+
+			if (!pMsg)
+			{
+				char sInfo[MAX_PATH] = { 0 };
+				sprintf_s(sInfo, sizeof(sInfo), "the msg : %d has not bind, please bind it in file Dog_S_MsgBind.cpp", msgHead.m_nMsgType);
+				GetDoggy().Bark_Error_Log(std::string(sInfo));
+				continue;
+			}
+
 			pMsg->Init(msgHead, sMsgData);
 			GETGOLBALDATA().InsertMsg(pMsg);
 

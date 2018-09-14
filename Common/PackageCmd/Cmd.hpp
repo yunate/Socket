@@ -13,7 +13,7 @@ namespace Cmd
 	{
 		CMD_ERROR_HEAD			= 0,				// ´íÎóÍ·
 		CMD_STRING,									// ×Ö·ûÊý¾Ý
-
+		CMD_TEST,									// ²âÊÔ
 		CMD_ERROR_END								// ´íÎóÎ²
 	};
 
@@ -32,5 +32,24 @@ namespace Cmd
 
 		CmdType m_nMsgType;
 	}MsgHead;
+
+	typedef struct TestData
+	{
+		int nX;
+		int nY;
+		char cX;
+		char cY[10];
+		int nZ[10];
+
+		TestData()
+		{
+			nX = 0;
+			nY = 0;
+			cX = 0;
+			memset(cY, 0, sizeof(cY));
+			memset(nZ, 0, sizeof(nZ));
+		}
+
+	}TestData;
 }
 
