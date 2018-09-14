@@ -16,11 +16,11 @@ LogDoggy::~LogDoggy()
 	}
 }
 
-void LogDoggy::Bark(ILog & log)
+void LogDoggy::Bark(Unique_ILog upLog)
 {
 	if (m_pTracer)
 	{
-		m_pTracer->Trace(log);
+		m_pTracer->Trace(std::move(upLog));
 	}
 }
 
@@ -41,14 +41,14 @@ void LogDoggy::Init()
 
 void LogDoggy::Bark_Error_Log(std::string sLog)
 {
-	ILog& log = ErrorLog(sLog);
-	log.Format();
-	Bark(log);
+	Unique_ILog upLog(new ErrorLog(sLog));
+	upLog->Format();
+	Bark(std::move(upLog));
 }
 
 void LogDoggy::Bark_Info_Log(std::string sLog)
 {
-	ILog& log = InfoLog(sLog);
-	log.Format();
-	Bark(log);
+	Unique_ILog upLog(new InfoLog(sLog));
+	upLog->Format();
+	Bark(std::move(upLog));
 }

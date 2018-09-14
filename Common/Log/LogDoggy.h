@@ -10,7 +10,7 @@ private:
 public:
 	~LogDoggy();
 
-	void Bark(ILog& log);
+	void Bark(Unique_ILog upLog);
 	void SetTracer(ILogTracer* pTracer);
 	void Init();
 

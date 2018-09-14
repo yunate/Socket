@@ -1,6 +1,8 @@
-#include "LogTracerImpl.h"
 #include <fstream>
 #include <sstream>
+
+#include "LogTracerImpl.h"
+#include "Lock/Dog_Lock.h"
 
 #ifndef NDEBUG
 #include <assert.h>
@@ -9,6 +11,7 @@
 
 #define MAX_LOG_FILE_SIZE 10
 
+/*************************本地日志*******************************************/
 LocalFileTracer::LocalFileTracer(std::string sFix/* = "log"*/)
 	: m_sFileName(""), m_sFix(sFix)
 {
@@ -22,27 +25,28 @@ LocalFileTracer::LocalFileTracer(std::string sFix/* = "log"*/)
 	CreateDirectoryA(m_sDirPath.c_str(), NULL);
 }
 
-bool LocalFileTracer::Trace(ILog & log)
+bool LocalFileTracer::Trace(Unique_ILog upLog)
 {
 	std::string sPath = GetAvailableFile();
+
 	FILE* pFile;
 	if (fopen_s(&pFile, sPath.c_str(), "a"))
 	{
 		return false;
 	}
 
-	std::string sLog = log.GetLog();
+	std::string sLog = upLog->GetLog();
 	fprintf_s(pFile, sLog.c_str());
 	fclose(pFile);
 
 	
 #ifndef NDEBUG
-	if (ILog::LOG_ERROR == log.GetLogLevel())
+	if (ILog::LOG_ERROR == upLog->GetLogLevel())
 	{
 		assert(1);
 	}
 
-	std::cout << log.GetLog();
+	std::cout << upLog->GetLog();
 #endif
 
 	return true;
@@ -68,6 +72,7 @@ std::string LocalFileTracer::GetAvailableFile()
 			std::fstream fileStream(sLogIniFullPath);
 			fileStream >> m_sFileName;
 			fileStream.close();
+
 			DeleteFileA(sLogIniFullPath.c_str());
 		}
 
@@ -119,3 +124,58 @@ std::string LocalFileTracer::GetAvailableFile()
 
 	return sFullPath;
 }
+/*************************本地日志*******************************************/
+
+/*************************异步日志*******************************************/
+AsyncLogTracerImpl::AsyncLogTracerImpl(ILogTracer* pNormalTracter)
+	: m_pNormalTracter(pNormalTracter), m_bRun(true)
+{
+	m_pMutex = new std::mutex();
+
+	// 子类调用父类的函数（不要以为这是一个虚函数就不能调用了）
+	Start();
+}
+
+AsyncLogTracerImpl::~AsyncLogTracerImpl()
+{
+	if (m_pNormalTracter)
+	{
+		delete m_pNormalTracter;
+	}
+
+	if (m_pMutex)
+	{
+		delete m_pMutex;
+	}
+}
+
+bool AsyncLogTracerImpl::Trace(Unique_ILog upLog)
+{
+	Dog_Lock lock(m_pMutex);
+	m_upLogList.push_back(std::move(upLog));
+	return true;
+}
+
+void AsyncLogTracerImpl::_Run()
+{
+	while (m_bRun)
+	{
+		Sleep(5);
+
+		if (m_pNormalTracter)
+		{
+			std::list<Unique_ILog>::iterator it = m_upLogList.begin();
+
+			while (m_upLogList.end() != it)
+			{
+				m_pNormalTracter->Trace(std::move(*it));
+				Dog_Lock lock(m_pMutex);
+				it = m_upLogList.erase(it);
+			}
+		}
+	}
+
+	m_upLogList.clear();
+}
+/*************************异步日志*******************************************/
+

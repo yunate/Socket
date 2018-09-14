@@ -11,7 +11,9 @@
 
 int main(int argc, char* argv[])
 {
-	GetDoggy().SetTracer(new LocalFileTracer("server"));
+	ILogTracer* pNormalTracer = new LocalFileTracer("server");
+	AsyncLogTracerImpl* pTracter = new AsyncLogTracerImpl(pNormalTracer);
+	GetDoggy().SetTracer(pTracter);
 	GETTHREADMANAGER().CreateDogServerThread(8888);
 	GETTHREADMANAGER().CreateDogSClientHandOutThread();
 	GETTHREADMANAGER().CreateDogSDisConnClientThread();
@@ -23,5 +25,6 @@ int main(int argc, char* argv[])
 	}
 
 	GETTHREADMANAGER().StopAllThread();
+	pTracter->Stop();
 	return 0;
 }

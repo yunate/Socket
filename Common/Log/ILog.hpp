@@ -2,6 +2,10 @@
 #include <windows.h>
 #include <tchar.h>
 #include <string>
+#include <memory>
+
+class ILog;
+typedef std::unique_ptr<ILog> Unique_ILog;
 
 class ILog
 {
@@ -52,5 +56,5 @@ class ILogTracer
 {
 public:
 	virtual ~ILogTracer() {};
-	virtual bool Trace(ILog& log) = 0;
+	virtual bool Trace(Unique_ILog upLog) = 0;
 };
