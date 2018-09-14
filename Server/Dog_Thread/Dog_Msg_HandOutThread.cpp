@@ -135,5 +135,11 @@ void Dog_Msg_HandOutThread::_Run()
 			it = pMsgs.erase(it);
 		}
 	}
-	UnInit();
 }
+
+bool Dog_Msg_HandOutThread::_Dog_Stop_After()
+{
+	UnInit();
+	return true;
+}
+
