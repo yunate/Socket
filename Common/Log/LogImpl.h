@@ -5,7 +5,7 @@ class ErrorLog : public ILog
 {
 public:
 	ErrorLog(std::string sLog);
-	~ErrorLog();
+	virtual ~ErrorLog();
 
 public:
 	virtual LogLevel GetLogLevel()

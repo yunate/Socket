@@ -12,7 +12,7 @@ class Dog_S_ClientThread : public Dog_Thread_Base
 {
 public:
 	Dog_S_ClientThread(int nId);
-	~Dog_S_ClientThread();
+	virtual ~Dog_S_ClientThread();
 
 public:
 	inline int GetId()

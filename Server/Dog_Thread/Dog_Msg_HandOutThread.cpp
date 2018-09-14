@@ -137,7 +137,7 @@ void Dog_Msg_HandOutThread::_Run()
 	}
 }
 
-bool Dog_Msg_HandOutThread::_Dog_Stop()
+bool Dog_Msg_HandOutThread::_Dog_Stop_After()
 {
 	UnInit();
 	return true;

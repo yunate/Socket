@@ -29,7 +29,7 @@ void Dog_S_Client_HandOuterThread::UnInit()
 	}
 }
 
-bool Dog_S_Client_HandOuterThread::_Dog_Stop()
+bool Dog_S_Client_HandOuterThread::_Dog_Stop_After()
 {
 	UnInit();
 	return true;

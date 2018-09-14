@@ -6,7 +6,7 @@ class IThread
 {
 public:
 	IThread();
-	~IThread();
+	virtual ~IThread();
 
 public:
 	void Start();
@@ -19,7 +19,9 @@ private:
 
 private:
 	virtual void _Start() {};
+	virtual void _Start_After() {};
 	virtual void _Stop() {};
+	virtual void _Stop_After() {};
 	virtual void _Run() = 0;
 
 private:

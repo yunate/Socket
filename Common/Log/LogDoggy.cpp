@@ -9,7 +9,7 @@ LogDoggy::LogDoggy()
 
 LogDoggy::~LogDoggy()
 {
-	if (!m_pTracer)
+	if (m_pTracer)
 	{
 		delete m_pTracer;
 		m_pTracer = 0;

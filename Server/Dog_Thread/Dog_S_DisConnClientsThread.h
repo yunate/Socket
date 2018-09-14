@@ -5,7 +5,7 @@ class Dog_S_DisConnClientsThread : public Dog_Thread_Base
 {
 public:
 	Dog_S_DisConnClientsThread();
-	~Dog_S_DisConnClientsThread();
+	virtual ~Dog_S_DisConnClientsThread();
 
 
 public:

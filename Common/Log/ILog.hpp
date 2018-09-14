@@ -44,11 +44,13 @@ protected:
 class ILogFormat
 {
 public:
+	virtual ~ILogFormat() {};
 	virtual void Format(ILog& log) = 0;
 };
 
 class ILogTracer
 {
 public:
+	virtual ~ILogTracer() {};
 	virtual bool Trace(ILog& log) = 0;
 };

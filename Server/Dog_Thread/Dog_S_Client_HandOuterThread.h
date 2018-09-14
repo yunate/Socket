@@ -6,7 +6,7 @@ class Dog_S_Client_HandOuterThread : public Dog_Thread_Base
 {
 public:
 	Dog_S_Client_HandOuterThread();
-	~Dog_S_Client_HandOuterThread();
+	virtual ~Dog_S_Client_HandOuterThread();
 
 	void Init();
 	void UnInit();
@@ -17,5 +17,5 @@ public:
 
 private:
 	virtual void _Run();
-	virtual bool _Dog_Stop();
+	virtual bool _Dog_Stop_After();
 };

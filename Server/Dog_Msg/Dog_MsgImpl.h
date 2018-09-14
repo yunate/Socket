@@ -6,7 +6,7 @@ class Msg_String : public IDog_Msg
 {
 public:
 	Msg_String();
-	~Msg_String();
+	virtual ~Msg_String();
 
 public:
 	virtual bool				HandMsg();		// ¥¶¿Ì

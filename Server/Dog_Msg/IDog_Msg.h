@@ -7,7 +7,7 @@ class IDog_Msg
 {
 public:
 	IDog_Msg();
-	~IDog_Msg();
+	virtual ~IDog_Msg();
 
 public:
 	void						Init(Cmd::MsgHead nHead, std::string sMsgData);

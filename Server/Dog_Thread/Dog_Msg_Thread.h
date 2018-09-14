@@ -11,7 +11,7 @@ class Dog_Msg_Thread : public Dog_Thread_Base
 {
 public:
 	Dog_Msg_Thread(int nId, size_t nMaxCount);
-	~Dog_Msg_Thread();
+	virtual ~Dog_Msg_Thread();
 
 public:
 	bool InsertMsg(IDog_Msg* sMsg);

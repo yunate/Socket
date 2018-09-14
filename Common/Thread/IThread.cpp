@@ -18,6 +18,7 @@ void IThread::Start()
 {
 	_Start();
 	m_thread = new std::thread(&IThread::Run, this);
+	_Start_After();
 }
 
 void IThread::Stop()
@@ -26,6 +27,8 @@ void IThread::Stop()
 
 	// 让线程跑完再说
 	m_thread->join();
+
+	_Stop_After();
 }
 
 void IThread::Run()

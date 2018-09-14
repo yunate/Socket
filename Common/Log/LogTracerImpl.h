@@ -5,7 +5,7 @@ class LocalFileTracer : public ILogTracer
 {
 public:
 	LocalFileTracer(std::string sFix = "log");
-	~LocalFileTracer() {};
+	virtual ~LocalFileTracer() {};
 
 public:
 	virtual bool Trace(ILog& log);

@@ -6,8 +6,6 @@
 
 #include "Dog_S_ClientThread.h"
 
-
-
 class Dog_ThreadManager
 {
 public:

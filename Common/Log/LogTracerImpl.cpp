@@ -31,7 +31,8 @@ bool LocalFileTracer::Trace(ILog & log)
 		return false;
 	}
 
-	fprintf_s(pFile, log.GetLog().c_str());
+	std::string sLog = log.GetLog();
+	fprintf_s(pFile, sLog.c_str());
 	fclose(pFile);
 
 	
@@ -109,10 +110,11 @@ std::string LocalFileTracer::GetAvailableFile()
 
 	// Ω´≈‰÷√–¥ªÿ»•
 	FILE* fp = 0;
-	if (0 == fopen_s(&fp, sLogIniFullPath.c_str(), "a"))
+	if (0 == fopen_s(&fp, sLogIniFullPath.c_str(), "w"))
 	{
 		fwrite(m_sFileName.c_str(), strlen(m_sFileName.c_str()), 1, fp);
 		fclose(fp);
+		SetFileAttributes(sLogIniFullPath.c_str(), FILE_ATTRIBUTE_HIDDEN);
 	}
 
 	return sFullPath;

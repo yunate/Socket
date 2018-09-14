@@ -10,7 +10,7 @@ private:
 	Dog_ServerThread(int nPort);
 
 public:
-	~Dog_ServerThread();
+	virtual ~Dog_ServerThread();
 
 private:
 	Dog_Server*			m_pServer;
