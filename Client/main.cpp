@@ -37,7 +37,7 @@ int main()
 		sockaddr_in serAddr;
 		serAddr.sin_family = AF_INET;
 		serAddr.sin_port = htons(8888);
-		serAddr.sin_addr.S_un.S_addr = inet_addr("127.0.0.1");
+		serAddr.sin_addr.S_un.S_addr = inet_addr("172.18.15.209");
 		if (connect(sclient, (sockaddr *)&serAddr, sizeof(serAddr)) == SOCKET_ERROR)
 		{  //¡¨Ω” ß∞‹ 
 			printf("connect error !");

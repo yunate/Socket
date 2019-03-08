@@ -19,6 +19,9 @@
     <Filter Include="Dog_Msg">
       <UniqueIdentifier>{5979ae4e-fc80-42b2-8e32-84eb56be9d1d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sqlite3">
+      <UniqueIdentifier>{8d4cf9aa-8d6e-4851-8127-7251d3f7dec9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -66,6 +69,9 @@
     <ClCompile Include="Dog_Thread\Dog_Msg_Thread.cpp">
       <Filter>Dog_Thread</Filter>
     </ClCompile>
+    <ClCompile Include="Sqlite3\SQLiteHelper.cpp">
+      <Filter>Sqlite3</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dog_Server.h">
@@ -112,6 +118,9 @@
     </ClInclude>
     <ClInclude Include="Dog_Msg\Dog_MsgImpl.h">
       <Filter>Dog_Msg</Filter>
+    </ClInclude>
+    <ClInclude Include="Sqlite3\SQLiteHelper.h">
+      <Filter>Sqlite3</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
