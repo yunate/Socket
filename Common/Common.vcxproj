@@ -129,9 +129,12 @@
     <ClInclude Include="Log\LogFormatImpl.h" />
     <ClInclude Include="Log\LogImpl.h" />
     <ClInclude Include="Log\LogTracerImpl.h" />
+    <ClInclude Include="MemoryShare\MemoryShare.h" />
     <ClInclude Include="PackageCmd\Cmd.hpp" />
     <ClInclude Include="PackageCmd\DataPackageTools.h" />
+    <ClInclude Include="Task\ITask.h" />
     <ClInclude Include="Thread\IThread.h" />
+    <ClInclude Include="Tools\TimerRecorder.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Lock\Dog_Lock.cpp" />
@@ -139,6 +142,7 @@
     <ClCompile Include="Log\LogFormatImpl.cpp" />
     <ClCompile Include="Log\LogImpl.cpp" />
     <ClCompile Include="Log\LogTracerImpl.cpp" />
+    <ClCompile Include="MemoryShare\MemoryShare.cpp" />
     <ClCompile Include="PackageCmd\DataPackageTools.cpp" />
     <ClCompile Include="Thread\IThread.cpp" />
   </ItemGroup>

@@ -12,4 +12,5 @@ void MsgFactory::Init()
 {
 	BIND_MSG(Cmd::CmdType::CMD_STRING, Msg_String);
 	BIND_MSG(Cmd::CmdType::CMD_TEST, Msg_Testdata);
+	BIND_MSG(Cmd::CmdType::CMD_FILETRANS, Msg_FileTrans);
 }

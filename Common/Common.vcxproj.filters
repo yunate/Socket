@@ -17,6 +17,15 @@
     <Filter Include="PackageCmd">
       <UniqueIdentifier>{cf018c56-1459-4b08-bc5a-cef4ae3eda78}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MemoryShare">
+      <UniqueIdentifier>{4f3575f7-3f25-4746-94f6-e9bf34754941}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tools">
+      <UniqueIdentifier>{a6142276-2798-43d6-9077-92d54942be5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Task">
+      <UniqueIdentifier>{bf754fdb-558e-4704-9d33-42694932985e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Log\ILog.hpp">
@@ -47,6 +56,15 @@
     <ClInclude Include="PackageCmd\Cmd.hpp">
       <Filter>PackageCmd</Filter>
     </ClInclude>
+    <ClInclude Include="MemoryShare\MemoryShare.h">
+      <Filter>MemoryShare</Filter>
+    </ClInclude>
+    <ClInclude Include="Tools\TimerRecorder.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Task\ITask.h">
+      <Filter>Task</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Log\LogDoggy.cpp">
@@ -69,6 +87,9 @@
     </ClCompile>
     <ClCompile Include="PackageCmd\DataPackageTools.cpp">
       <Filter>PackageCmd</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryShare\MemoryShare.cpp">
+      <Filter>MemoryShare</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

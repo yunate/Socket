@@ -4,6 +4,7 @@
 
 #include "Dog_MsgImpl.h"
 #include "Dog_GolbalData.h"
+#include "Tools/TimerRecorder.h"
 
 
 /************************Msg_String*************************************/
@@ -26,7 +27,6 @@ bool Msg_String::HandMsg()
 		, m_sMsgData.c_str());
 	return true;
 }
-/************************Msg_String*************************************/
 
 /************************Msg_Testdata*************************************/
 Msg_Testdata::Msg_Testdata()
@@ -44,4 +44,48 @@ bool Msg_Testdata::HandMsg()
 	++i;
 	return false;
 }
-/************************Msg_Testdata*************************************/
+
+/************************Msg_FileTrans*************************************/
+
+Msg_FileTrans::Msg_FileTrans()
+{
+}
+
+Msg_FileTrans::~Msg_FileTrans()
+{
+}
+
+bool Msg_FileTrans::HandMsg()
+{
+	std::string buff = "";
+
+	// 添加命令头
+	Cmd::CmdType nType = GetMsgType();
+	buff.append((char*)(&nType), sizeof(nType));
+
+	// 添加data
+	buff.append(m_sMsgData.data());
+	MemoryShare * pMemShare = GETGOLBALDATA().GetMemShare();
+
+	if (!pMemShare)
+	{
+		return false;
+	}
+
+	TimerRecorder timer;
+
+	while (!pMemShare->IsReadToWrite())
+	{
+		Sleep(10);
+
+		// 5秒还没有被取走，上一条内存内容作废
+		if (timer.GetTimePass() >= 5000)
+		{
+			pMemShare->Clear();
+			break;
+		}
+	}
+
+	pMemShare->Write((void *) (buff.data()), buff.size());
+	return true;
+}

@@ -7,6 +7,7 @@
 #include "Dog_Server.h"
 #include "Dog_S_Client.h"
 #include "Dog_Msg/IDog_Msg.h"
+#include "MemoryShare/MemoryShare.h"
 
 
 class Dog_GolbalData
@@ -72,6 +73,11 @@ public:
 		m_bRun = bRun;
 	}
 
+	inline MemoryShare * GetMemShare()
+	{
+		return m_pMemShare;
+	}
+
 private:
 	std::list<Dog_S_Client*>			m_hClients;					// 连接的客户端，由Dog_S_ClientThread管理
 	std::mutex*							m_pClientMutex;				// 互斥锁
@@ -84,6 +90,8 @@ private:
 
 	bool								m_bRun;
 
+	// 
+	MemoryShare *						m_pMemShare;
 private:
 	static Dog_GolbalData& GetIns()
 	{

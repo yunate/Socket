@@ -24,9 +24,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Dog_Server.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -60,9 +57,6 @@
     <ClCompile Include="Dog_Msg\Dog_S_MsgBind.cpp">
       <Filter>Dog_Msg</Filter>
     </ClCompile>
-    <ClCompile Include="Dog_Msg\Dog_MsgImpl.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Dog_Thread\Dog_Msg_HandOutThread.cpp">
       <Filter>Dog_Thread</Filter>
     </ClCompile>
@@ -71,6 +65,12 @@
     </ClCompile>
     <ClCompile Include="Sqlite3\SQLiteHelper.cpp">
       <Filter>Sqlite3</Filter>
+    </ClCompile>
+    <ClCompile Include="Main_Server.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Dog_Msg\Dog_MsgImpl.cpp">
+      <Filter>Dog_Msg</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

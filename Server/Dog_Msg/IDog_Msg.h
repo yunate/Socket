@@ -10,15 +10,15 @@ public:
 	virtual ~IDog_Msg();
 
 public:
-	void						Init(Cmd::MsgHead nHead, std::string sMsgData);
+	void								Init(Cmd::MsgHead nHead, std::string sMsgData);
 
-	inline int					GetMsgType()
+	inline Cmd::CmdType					GetMsgType()
 	{
 		return m_nHead.m_nMsgType;
 	}
 
 public:
-	virtual bool				HandMsg() = 0;		// 处理
+	virtual bool						HandMsg() = 0;		// 处理
 
 protected:
 	std::string					m_sMsgData;

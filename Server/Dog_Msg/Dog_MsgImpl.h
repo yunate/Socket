@@ -25,4 +25,17 @@ public:
 	virtual bool				HandMsg();		// 处理
 
 };
+
+/************************Msg_FileTrans*************************************/
+class Msg_FileTrans : public IDog_Msg
+{
+public:
+	Msg_FileTrans();
+	virtual ~Msg_FileTrans();
+
+public:
+	virtual bool				HandMsg();		// 处理
+
+};
+
 /************************Msg_Testdata*************************************/

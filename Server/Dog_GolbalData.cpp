@@ -7,6 +7,10 @@ Dog_GolbalData::Dog_GolbalData()
 	m_pMsgMutex = new std::mutex();
 
 	m_bRun = true;
+
+	//
+	m_pMemShare = new MemoryShare("{3AAB25AC-B3D0-4C5D-9EDD-D94114C05495}");
+	m_pMemShare->Clear();
 }
 
 Dog_GolbalData::~Dog_GolbalData()
@@ -39,7 +43,14 @@ Dog_GolbalData::~Dog_GolbalData()
 	{
 		delete (*it);
 	}
+
 	m_pMsgs.clear();
+
+	if (m_pMemShare)
+	{
+		delete m_pMemShare;
+		m_pMemShare = 0;
+	}
 }
 
 void Dog_GolbalData::InsertClient(SOCKET hClient, sockaddr_in address)

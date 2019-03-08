@@ -33,7 +33,7 @@
     <ClCompile Include="Dog_Thread\Dog_S_Client_HandOuterThread.cpp" />
     <ClCompile Include="Dog_Thread\Dog_S_DisConnClientsThread.cpp" />
     <ClCompile Include="Dog_Thread\Dog_ThreadManager.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Main_Server.cpp" />
     <ClCompile Include="Sqlite3\SQLiteHelper.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -63,13 +63,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v140_xp</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v140_xp</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -122,6 +122,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>Commond.lib;%(AdditionalDependencies)ws2_32.lib</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -145,6 +146,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>Common.lib;%(AdditionalDependencies)ws2_32.lib</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
